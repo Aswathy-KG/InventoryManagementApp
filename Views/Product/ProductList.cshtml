@@ -1,0 +1,62 @@
+﻿@model IEnumerable<InventoryManagementApp.Models.Product>
+<div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+
+        <li class="nav-item">
+            <a class="nav-link" href="@Url.Action("Logout", "Admin")">Logout</a>
+        </li>
+
+    </ul>
+</div>
+<div class="container mt-5">
+    <h2 class="mb-4">Products</h2>
+    <div class="text-right">
+        <a href="@Url.Action("AddOrEdit")" class="btn btn-primary">
+            <i class="fas fa-plus"></i>
+        </a>
+    </div>
+
+    <table class="table table-striped table-bordered product-table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>@product.ProductName</td>
+                    <td>@product.Price</td>
+                    <td>
+                        @if (product.ProductImage != null && product.ProductImage.Length > 0)
+                        {
+                            <img src="data:image/png;base64,@Convert.ToBase64String(product.ProductImage)" alt="Product Image" class="img-fluid" />
+                        }
+                        else
+                        {
+                            <img src="path/to/default/image.png" alt="No Image" class="img-fluid" />
+                        }
+                    </td>
+                    <td>
+                        <a href="@Url.Action("AddOrEdit", new { id = product.ProductId })" class="btn btn-warning btn-sm">
+                            <i class="fas fa-edit"></i>
+                        </a>
+
+                        <form action="@Url.Action("DeleteProduct")" method="post" style="display:inline;">
+                            <input type="hidden" name="ProductId" value="@product.ProductId" />
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this product?');">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+</div>

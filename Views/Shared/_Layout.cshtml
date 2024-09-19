@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inventory</title>
+
+    <link rel="icon" type="image/x-icon" width="64" height="64" href="https://img.icons8.com/arcade/64/hospital.png" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        .navbar-custom {
+            background-color: #343a40; /* Dark background color */
+        }
+
+            .navbar-custom .navbar-brand, .navbar-custom .navbar-nav .nav-link {
+                color: #ffffff; /* White text color */
+            }
+
+            .navbar-custom .navbar-nav .nav-link {
+                margin-right: 20px;
+            }
+
+                .navbar-custom .navbar-nav .nav-link:hover {
+                    color: #f8f9fa; /* Light color on hover */
+                }
+    </style>
+</head>
+<body>
+  
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Inventory Management System</p>
+        </footer>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
